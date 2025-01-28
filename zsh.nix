@@ -10,10 +10,9 @@
       krew
       kubectl
       kind
-      1password
     ];
   };
-  programs = {ki
+  programs = {
     starship = {
       enable = true;
       settings = {

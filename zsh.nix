@@ -7,6 +7,7 @@
       colima
       direnv
       docker
+      gh
       kind
       krew
       kubectl

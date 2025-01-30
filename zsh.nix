@@ -7,9 +7,11 @@
       colima
       direnv
       docker
+      kind
       krew
       kubectl
-      kind
+      stern
+      zsh
     ];
   };
   programs = {

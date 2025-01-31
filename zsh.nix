@@ -22,6 +22,7 @@
         add_newline = true;
         nix_shell = {
           disabled = false;
+          heuristic = true;
         };
         kubernetes = {
           disabled = false;

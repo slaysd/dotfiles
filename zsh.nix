@@ -2,12 +2,13 @@
   home = {
     username = "user";
     homeDirectory = "/Users/user";
-    stateVersion = "22.11";
+    stateVersion = "24.11";
     packages = with pkgs; [
       colima
       direnv
       docker
       gh
+      jq
       kind
       krew
       kubectl
@@ -36,12 +37,15 @@
       '';
       initExtra = ''
         export PATH="$HOME/.krew/bin:$PATH"
+        ZPLUG_PATH=$(nix eval --raw .#homeConfigurations.user.pkgs.zplug) && export PATH=$(echo ":$PATH:" | sed -E "s#:$ZPLUG_PATH/share/zplug/bin*##g")
       '';
       zplug = {
         enable = true;
         plugins = [
+          { name = "zsh-users/zsh-completions"; }
           { name = "zsh-users/zsh-autosuggestions"; }
           { name = "zsh-users/zsh-syntax-highlighting"; }
+          { name = "plugins/colored-man-pages"; tags = [from:oh-my-zsh]; }
           { name = "plugins/kubectl"; tags = [from:oh-my-zsh]; }
           { name = "plugins/direnv"; tags = [from:oh-my-zsh]; }
         ]; 

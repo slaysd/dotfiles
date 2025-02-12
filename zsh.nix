@@ -36,20 +36,20 @@
       initExtraFirst = ''
       '';
       initExtra = ''
-        export PATH="$HOME/.krew/bin:$PATH"
-        ZPLUG_PATH=$(nix eval --raw .#homeConfigurations.user.pkgs.zplug) && export PATH=$(echo ":$PATH:" | sed -E "s#:$ZPLUG_PATH/share/zplug/bin*##g")
+        export PATH=$HOME/.krew/bin:$PATH
+        export ZPLUG_HOME=$HOME/.zplug
+        source $ZPLUG_HOME/init.zsh
+        
+        # Zplug
+        zplug check || zplug install
+        zplug "zsh-users/zsh-completions"
+        zplug "zsh-users/zsh-autosuggestions"
+        zplug "zsh-users/zsh-syntax-highlighting"
+        zplug "plugins/colored-man-pages", from:oh-my-zsh
+        zplug "plugins/kubectl", from:oh-my-zsh
+        zplug "plugins/direnv", from:oh-my-zsh
+        zplug load
       '';
-      zplug = {
-        enable = true;
-        plugins = [
-          { name = "zsh-users/zsh-completions"; }
-          { name = "zsh-users/zsh-autosuggestions"; }
-          { name = "zsh-users/zsh-syntax-highlighting"; }
-          { name = "plugins/colored-man-pages"; tags = [from:oh-my-zsh]; }
-          { name = "plugins/kubectl"; tags = [from:oh-my-zsh]; }
-          { name = "plugins/direnv"; tags = [from:oh-my-zsh]; }
-        ]; 
-      };
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
       historySubstringSearch.enable = true;

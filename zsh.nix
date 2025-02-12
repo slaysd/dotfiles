@@ -34,6 +34,8 @@
       enable = true;
 
       initExtraFirst = ''
+      # case insensitive completion
+      zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
       '';
       initExtra = ''
         export PATH=$HOME/.krew/bin:$PATH

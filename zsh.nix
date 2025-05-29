@@ -14,6 +14,7 @@
       kubectl
       stern
       zsh
+      uv
     ];
   };
   programs = {
